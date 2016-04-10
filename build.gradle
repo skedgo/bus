@@ -1,0 +1,10 @@
+apply plugin: 'java'
+
+repositories { jcenter() }
+jar { version = "1.0.0" }
+
+dependencies {
+  testCompile 'junit:junit:4.12'
+  testCompile 'org.assertj:assertj-core:1.7.0'
+  compile 'io.reactivex:rxjava:1.1.3'
+}
