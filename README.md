@@ -4,11 +4,11 @@
 ```java
 final Bus bus = new Bus();
 ```
-## Publishing
+### Publishing
 ```java
 bus.post(ItemSelectedEvent.of(position));
 ```
-## Subscribing
+### Subscribing
 ```java
 // Subscription can be unsubscribed via some tools like RxLifecycle.
 bus.listen()
@@ -18,6 +18,21 @@ bus.listen()
       // TODO: Handle the event.
     }
   }, ErrorHandlers.trackError());
+```
+## Download
+**Step 1**. Add the JitPack repository to your root build file.
+```groovy
+allprojects {
+  repositories {
+    maven { url "https://jitpack.io" }
+  }
+}
+```
+**Step 2**. Add the dependency.
+```groovy
+dependencies {
+  compile 'com.github.skedgo:bus:v1.0'
+}
 ```
 License
 -------
