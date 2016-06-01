@@ -1,21 +1,12 @@
-package com.skedgo.bus;
+package skedgo.bus;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import rx.observers.TestSubscriber;
-import rx.subjects.Subject;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class BusTest {
-  private Bus bus;
-
-  @Before public void before() {
-    bus = Bus.create();
-  }
-
   @Test public void postAndListen() {
+    final Bus bus = new Bus();
     final TestSubscriber<String> subscriber1 = new TestSubscriber<>();
     bus.listen().ofType(String.class).subscribe(subscriber1);
     bus.post("1");
@@ -28,9 +19,5 @@ public class BusTest {
     bus.post("3");
     subscriber1.assertValues("1", "2", "3");
     subscriber2.assertValue("3");
-  }
-
-  @Test public void convertToObservable() {
-    assertThat(bus.listen()).isNotInstanceOf(Subject.class);
   }
 }
